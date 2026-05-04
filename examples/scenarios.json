@@ -1,0 +1,23 @@
+[
+  {
+    "sku": "SKU-A",
+    "mean_demand_per_period": 120,
+    "stdev_demand_per_period": 25,
+    "mean_lead_time_periods": 2.5,
+    "stdev_lead_time_periods": 0.6,
+    "review_period_periods": 0,
+    "service_target_kind": "cycle_service_level",
+    "service_target_value": 0.95
+  },
+  {
+    "sku": "SKU-B",
+    "mean_demand_per_period": 80,
+    "stdev_demand_per_period": 15,
+    "mean_lead_time_periods": 3,
+    "stdev_lead_time_periods": 0.8,
+    "review_period_periods": 1,
+    "service_target_kind": "fill_rate",
+    "service_target_value": 0.98,
+    "order_quantity": 400
+  }
+]

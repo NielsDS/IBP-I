@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "single-echelon-safety-stock"
+version = "0.1.0"
+description = "State-of-the-art single-echelon safety stock calculator"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "IBP-I" }]
+license = { file = "LICENSE" }
+keywords = ["supply-chain", "inventory", "safety-stock", "single-echelon"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Office/Business :: Financial :: Accounting",
+]
+
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+safety-stock = "safety_stock.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+addopts = "-q"
