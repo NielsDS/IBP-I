@@ -17,13 +17,27 @@ classifiers = [
   "Topic :: Office/Business :: Financial :: Accounting",
 ]
 
-dependencies = []
+dependencies = [
+  "pydantic>=2.0",
+]
 
 [project.optional-dependencies]
-dev = ["pytest>=8.0"]
+api = [
+  "fastapi>=0.110",
+  "uvicorn[standard]>=0.29",
+]
+dev = [
+  "pytest>=8.0",
+  "httpx>=0.27",
+  "anyio[trio]>=4.0",
+  "pytest-anyio>=0.0.0",
+  "ruff>=0.4",
+  "mypy>=1.10",
+]
 
 [project.scripts]
 safety-stock = "safety_stock.cli:main"
+safety-stock-api = "safety_stock.api:run"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
@@ -34,3 +48,15 @@ where = ["src"]
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+ignore_missing_imports = true
