@@ -1,0 +1,28 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: safety-stock-api:local
+    ports:
+      - "8000:8000"
+    environment:
+      SS_HOST: "0.0.0.0"
+      SS_PORT: "8000"
+      SS_WORKERS: "2"
+      SS_LOG_LEVEL: "INFO"
+      SS_LOG_JSON: "true"
+      SS_DOCS_ENABLED: "true"
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
